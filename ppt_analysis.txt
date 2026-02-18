@@ -1,0 +1,526 @@
+--- ANALYZING PPT: Westside Weekly Report - TEMPLATE.pptx ---
+
+--- SLIDE 1 ---
+- Weekly Report
+- Date:
+- 14th Jan- 20th Jan 2026
+
+
+--- SLIDE 2 ---
+- Index
+- Platforms we use
+- Overview:
+- - Facebook
+- - Instagram
+- - Linkedin
+- - YouTube
+- Competition Analysis
+- Learnings and Recommendations
+
+
+--- SLIDE 3 ---
+- Follower Growth Comparison (Instagram) 2025 - 2026
+- Inference:
+- Year-over-year follower growth recorded a strong uplift this week, driven by improved content performance, newness, and Sale-led content that resonated well with audiences.
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 4 ---
+- Reach and Engagement with Video Views Comparison (Instagram) 2025 - 2026
+- Inference:
+- The year-over-year increase in reach and engagement was driven by higher video views, with Sale-led content delivering the highest impact, reaching up to 18M views, while the Wedding Sprint campaign also performed strongly.
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 5 ---
+- Engagement Rate with Video Views Comparison (Instagram) 2025 - 2026
+- Inference:
+- Year-over-year performance showed a clear uplift, driven primarily by Sale-led content that reached a wide audience, with the wedding sprint campaign also delivering strong result.
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 6 ---
+- Link Clicks Comparison (Instagram) 2025 v/s 2026
+- Inference:
+- Link clicks declined this period, indicating an opportunity to strengthen user intent and improve click-through performance through more compelling Tap-to-Shop stories.
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 7 ---
+- Followers Growth
+- Follower Growth counted Manually :
+- {{IG_FOLLOWER_GROWTH}}
+- Note: Follower growth data was manually extracted as the Instagram dashboard is not showing weekly growth insights.
+- Extracted : 20th January 2026  | 12 PM
+- Date:
+- {{REPORT_DATE_RANGE}}
+
+
+--- SLIDE 8 ---
+- Instagram
+
+
+--- SLIDE 9 ---
+- Instagram Page Analysis Summary
+- Particulars
+- 7th Jan- 13th Jan
+- (Previous Week)
+- 14th Jan- 20th Jan
+- (Current Week)
+- Growth
+- Instagram Posts | Stories
+- 12|44
+- 9|42
+- -3|-2
+- Page Followers
+- 978,756
+- 982,377
+- +3,621
+- Total Reach
+- 2,340,187
+- 4,758,134
+- +2,417,947
+- Total Engagement
+- 1,913,649
+- 22,285,852
+- +20,372,203
+- Video Views
+- 1,871,510
+- 22,222,291
+- +20,350,781
+- Story views
+- 1,051,932
+- 1,091,063
+- +39,131
+- Engagement Rate without Video Views
+- 1.8%
+- 1.3%
+- Engagement Rate with Video Views
+- 81.7%
+- 468.3%
+
+
+--- SLIDE 10 ---
+- Inference:
+- January recorded a strong increase in new followers, reflecting steady and positive audience growth. This momentum was primarily driven by Sale-led content, along with the Wedding Sprint and modern man, which successfully captured audience interest.
+- .
+- Month on Month Follower Growth Chart (Instagram)
+- Date: 1st  Jan- 20th  Dec 2026
+
+
+--- SLIDE 11 ---
+- Week on Week Follower Growth Chart (Instagram)
+- Inference:
+- Weekly follower growth declined, likely due to lower content volume; however, growth is expected to rebound with the rollout of Nuonflex content.
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 12 ---
+- Inference:
+- Reach and engagement grew significantly this week, indicating strong content performance, driven primarily by Sale-led content, wedding sprint and modern man that resonated well with audiences.
+- Reach and Engagement without Video Views
+- Date:   14th Jan- 20th Jan 2026
+
+
+--- SLIDE 13 ---
+- Inference:
+- This week saw an increase in both reach and video engagement, driven by Sale-led content reaching up to 18M views, along with strong performance from the Wedding Sprint, which captured audience interest.
+- Reach and Engagement with Video Views
+- Date:      14th Jan- 20th Jan 2026
+- 22,285,852
+
+
+--- SLIDE 14 ---
+- Inference:
+- This week, the engagement rate for video views increased nearly sixfold, driven by strong engagement on Sale-led content that effectively captured audience attention.
+- Engagement Rate (With Video Views)
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 15 ---
+- Engagement Rate (Without Video Views)
+- Inference
+- :
+- Reach and engagement rate declined this week, primarily due to lower content volume and underperformance of newness-led content. However, Sale-led content helped offset the dip and supported overall performance.
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 16 ---
+- Inference:
+- Video views saw a significant increase this week, driven primarily by Sale-led content that crossed 18M views and captured maximum audience attention. The Wedding Sprint also performed strongly, contributing to overall viewership growth.
+- Video Views
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 17 ---
+- Link Clicks
+- Inference
+- :
+- Link clicks declined this week, primarily due to underperforming Tap-to-Shop stories that did not resonate strongly with audiences.
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 18 ---
+- Profile Activity
+- Inference:
+- Profile activity grew this week, primarily fueled by Sale-led videos that effectively directed audience traffic to the profile.
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 19 ---
+- Best Performing Post on the basis of Reach
+- Inference:
+- The Sale period generated significant excitement, with the ‘30% Off’ video effectively capturing audience interest and driving strong engagement.
+- Video Views: 3,726,728
+- Likes: 43,109
+- Comments: 196
+- Shares: 277
+- Saves: 79
+- Engagement: 43,661
+- Reach: 3,045,916
+- Eng. Rate w/o VV: 1.43%
+- Eng Rate w VV: 123.7%
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 20 ---
+- Least Performing Post on the basis of Reach
+- Inference :
+- Hop girl did not perform well mainly due to visuals which may not have aligned closely with audience expectations, resulting in reduced reach and interaction.
+- Video Views: 29,019
+- Likes: 116
+- Comments: 48
+- Shares: 24
+- Saves: 10
+- Engagement: 198
+- Reach: 17,605
+- Eng. Rate w/o VV: 1.12%
+- Eng Rate w VV: 165.9%
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 21 ---
+- Inference:
+- The story featuring women discussing Lolla and showcasing the outfits performed strongly, resonating well with audiences due to its timely relevance.
+- Best Performing Story on the basis of Reach
+- Views : 37,073
+- Reach : 32,062
+- Engagement: 513
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 22 ---
+- Inference:
+- The Men’s Winter Collection Tap-to-Shop UGC underperformed, primarily due to subpar visuals and limited audience resonance, which resulted in lower engagement and click-throughs.
+- Least Performing Story on the basis of Reach
+- Views : 19,058
+- Reach : 16,035
+- Engagement: 322
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 23 ---
+- Facebook
+
+
+--- SLIDE 24 ---
+- Facebook Page Analysis Summary
+- Particulars
+- 7th Jan- 13th Jan
+- (Previous Week)
+- 14th Jan- 20th Jan
+- (Current Week)
+- Growth
+- Posts | Stories
+- 9|44
+- 9|43
+- 0|
+- -1
+- Page Followers
+- 723,607
+- 724,606
+- +999
+- Total Reach
+- 248,496
+- 287,227
+- +38,731
+- Total Engagement
+- 25,537
+- 39,076
+- +13,539
+- Total Views
+- 260,618
+- 300,457
+- +39,839
+- Engagement Rate without Video Views
+- 0.35%
+- 0.30%
+- Engagement Rate with Video Views
+- 10.2%
+- 13.6%
+
+
+--- SLIDE 25 ---
+- Month-on-Month Follower Growth
+- Date: 1st Jan- 20th Dec 2026
+
+
+--- SLIDE 26 ---
+- Reach and Engagement without Video Views
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 27 ---
+- Reach and Engagement with Video Views
+- Date:      14th Jan- 20th Jan 2026
+- 783,973
+
+
+--- SLIDE 28 ---
+- Total Views
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 29 ---
+- Best Performing Post on the Basis of Reach
+- Reach: 5,337
+- Engagement: 40
+- Engagement Rate: 0.74%
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 30 ---
+- Least Performing Post Basis Reach
+- Reach: 2,395
+- Engagement: 11
+- Eng. Rate: 0.45%
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 31 ---
+- Best Performing Story Basis Reach
+- Reach: 12,351
+- Engagement: 42
+- Eng. Rate: 0.34%
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 32 ---
+- Least Performing Story on the basis of Reach
+- Reach: 2,132
+- Engagement: 8
+- Engagement Rate: 0.37%
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 33 ---
+- Youtube
+
+
+--- SLIDE 34 ---
+- Youtube Page Analysis Summary
+- Particulars
+- 7th Jan- 13th Jan
+- (Previous Week)
+- 14th Jan- 20th Jan
+- (Current Week)
+- Difference
+- Channel Subscribers
+- 132,674
+- 132,543
+- -131
+- YouTube Posts
+- 8
+- 0
+- Video Views
+- 30,263
+- 2,938,287
+- +2,908,024
+- Shorts Views
+- 39,673
+- 16,191,190
+- +16,151,517
+- Total Views
+- 69,936
+- 19,129,477
+- +19,059,541
+- Watch Time  (Hours)
+- 198.6
+- 78,420.7
+
+
+--- SLIDE 35 ---
+- Channel Subscribers
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 36 ---
+- Video Views
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 37 ---
+- Shorts Views
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 38 ---
+- Total Views
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 39 ---
+- Watch Time (Hours)
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 40 ---
+- Competitive Analysis
+
+
+--- SLIDE 41 ---
+- Campaign Snapshots
+- 30th anniversary collection
+- Denim wear
+
+
+--- SLIDE 42 ---
+- Linen Collection
+- Campaign Snapshots
+
+
+--- SLIDE 43 ---
+- Monochromatic Summer vibes
+- 50th Anniversary Celebration
+- Campaign Snapshots
+
+
+--- SLIDE 44 ---
+- Studio Resort Capsule Collection
+- Campaign Snapshots
+
+
+--- SLIDE 45 ---
+- Instagram Posts
+- INSTAGRAM
+- Gifs (video)
+- Stills (image)
+- Overall Interactions
+- LW
+- TW
+- C%*
+- Total No Posts
+- 12
+- 9
+- -25%
+- 0
+- 100.00%
+- Total Interactions
+- 26,962
+- 47,743
+- +77.1%
+- Avg interaction per post
+- 2,246
+- 5,304
+- +136%
+- Total Reach
+- 1,436,380
+- 3,834,148
+- +166.9%
+- Video View Rate
+- 130.2%
+- 579.5%
+- 0.00%
+- Engagement Rate without video views
+- 1.8%
+- 1.3%
+- Date:
+- 14th Jan- 20th Jan 2026
+
+
+--- SLIDE 46 ---
+- Facebook Posts
+- Facebook
+- Gifs (video)
+- Stills (image)
+- Overall Interactions
+- LW
+- TW
+- C%*
+- Total No Posts
+- 9
+- -
+- 0
+- nil
+- Total Interactions
+- 238
+- 239
+- +0.42%
+- Avg interaction per post
+- 26
+- Total Reach
+- 22,919
+- 34,212
+- +49.3%
+- Video View Rate
+- 107.6%
+- 111.6%
+- Engagement Rate without video views
+- 1.03%
+- 0.3%
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 47 ---
+- Stories
+- Instagram Stories
+- LW
+- TW
+- Change
+- Total Interactions
+- 15,177
+- 15,818
+- +4.2%
+- Average Interaction per story
+- 344
+- 376
+- +9.3%
+- No of Stories
+- 44
+- 42
+- -4.5%
+- Facebook Stories
+- 632
+- 642
+- +1.5%
+- 14
+- 15
+- +7.1%
+- 43
+- -2.2%
+- Date:      14th Jan- 20th Jan 2026
+
+
+--- SLIDE 48 ---
+- Observations
+- • Sale videos, including ‘20% Off’ and ‘30% Off’, consistently captured audience attention, generated high video views (up to 18M), and boosted engagement and profile activity.
+- • The Wedding Sprint campaign resonated well with audiences, contributing significantly to reach and video engagement.
+- • Stories featuring Lolla outfits and women discussing them performed well due to timely relevance and context, showing the importance of aligning content with audience interest.
+- • Reach and engagement grew significantly this week, indicating strong content performance.
+- • Link clicks decreased this week, likely due to lower engagement on Tap to Shop UGC’s.
+
+
+--- SLIDE 49 ---
+- Leverage High-Performing Influencers Strategically
+- Partner with influencers who align closely with the target audience, while avoiding overlapping or repetitive collaborations to prevent content fatigue.
+- Align Event and Timely Content with Audience Interests
+- Ensure that event- or holiday-led stories (e.g., Lolla, Holi) are contextually relevant, product-focused, and visually engaging to drive stronger audience resonance.
+- Capitalize on High-Performing Campaigns for Follower Growth
+- Use campaigns like Wedding Sprint and HOP Kids strategically to maintain steady follower growth and sustain engagement during high-interest periods.
+- Recommendations
+
+
+--- SLIDE 50 ---
+- Thank You
+
+
