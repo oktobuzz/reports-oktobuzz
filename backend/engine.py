@@ -337,7 +337,8 @@ class AnalyticsEngine:
         story_interactions = (
             safe_sum(stories_df, 'likes') + safe_sum(stories_df, 'shares') + 
             safe_sum(stories_df, 'replies') + safe_sum(stories_df, 'link_clicks') +
-            safe_sum(stories_df, 'profile_visits') + safe_sum(stories_df, 'sticker_taps')
+            safe_sum(stories_df, 'profile_visits') + safe_sum(stories_df, 'sticker_taps') +
+            safe_sum(stories_df, 'follows')
         )
         ig_interactions_only = ig_post_interactions + story_interactions
 
