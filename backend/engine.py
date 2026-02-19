@@ -58,7 +58,10 @@ class AnalyticsEngine:
         return pd.to_numeric(series.astype(str).str.replace(',', ''), errors='coerce').fillna(0)
 
     def _parse_date(self, series: pd.Series) -> pd.Series:
-        return pd.to_datetime(series, format='%m/%d/%Y %H:%M', errors='coerce')
+        # Use flexible parsing. 
+        # Note: If dayfirst is ambiguous (e.g. 01/02/2024), pandas defaults to Month-First (US) usually.
+        # Given the user's CSV had 01/28/2026, it is definitely Month-First or YYYY-MM-DD.
+        return pd.to_datetime(series, errors='coerce')
 
     def process_facebook_posts(self, file_contents: bytes, filename: str) -> pd.DataFrame:
         """Process Facebook Posts CSV."""

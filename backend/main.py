@@ -36,8 +36,8 @@ async def upload_facebook(files: List[UploadFile] = File(...)):
     global FACEBOOK_DF
     
     dfs = []
-    if not FACEBOOK_DF.empty:
-        dfs.append(FACEBOOK_DF)
+    # Data is overwritten by new upload
+
 
     for file in files:
         content = await file.read()
@@ -62,8 +62,8 @@ async def upload_instagram(files: List[UploadFile] = File(...)):
     global INSTAGRAM_DF
     
     dfs = []
-    if not INSTAGRAM_DF.empty:
-        dfs.append(INSTAGRAM_DF)
+    # Data is overwritten by new upload
+
 
     for file in files:
         content = await file.read()
@@ -88,8 +88,8 @@ async def upload_stories(files: List[UploadFile] = File(...)):
     global STORIES_DF
     
     dfs = []
-    if not STORIES_DF.empty:
-        dfs.append(STORIES_DF)
+    # Data is overwritten by new upload
+
 
     for file in files:
         content = await file.read()
