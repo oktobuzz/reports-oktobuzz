@@ -444,6 +444,13 @@ class AnalyticsEngine:
         s_views = safe_sum(s_filtered, 'views')
         s_count = len(s_filtered)
         
+        s_interactions = (
+            safe_sum(s_filtered, 'likes') + safe_sum(s_filtered, 'shares') + 
+            safe_sum(s_filtered, 'replies') + safe_sum(s_filtered, 'link_clicks') +
+            safe_sum(s_filtered, 'profile_visits') + safe_sum(s_filtered, 'sticker_taps') +
+            safe_sum(s_filtered, 'follows')
+        )
+
         story_stats = {
             "total_stories": int(s_count),
             "total_reach": safe_sum(s_filtered, 'reach'),
@@ -452,7 +459,8 @@ class AnalyticsEngine:
             "total_link_clicks": safe_sum(s_filtered, 'link_clicks'),
             "total_replies": safe_sum(s_filtered, 'replies'),
             "total_profile_visits": safe_sum(s_filtered, 'profile_visits'),
-            "total_follows": safe_sum(s_filtered, 'follows')
+            "total_follows": safe_sum(s_filtered, 'follows'),
+            "total_interactions": s_interactions
         }
         story_list = self._story_df_to_list(s_filtered)
 

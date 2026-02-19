@@ -620,12 +620,14 @@ function App() {
                                         <h2 className="text-2xl font-bold text-white">Instagram Stories</h2>
                                     </div>
 
-                                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
                                         <KPICard label="Total Stories" value={report.stories.stats.total_stories} sub="Count" />
                                         <KPICard label="Reach" value={report.stories.stats.total_reach} sub="Sum (Reach)" />
                                         <KPICard label="Total Views" value={report.stories.stats.total_views} sub="Sum (Views)" />
                                         <KPICard label="Link Clicks" value={report.stories.stats.total_link_clicks} sub="Sum (Clicks)" />
                                         <KPICard label="Avg Views" value={Math.round(report.stories.stats.avg_views_per_story)} sub="Views / Count" />
+                                        <KPICard label="Profile Visits" value={report.stories.stats.total_profile_visits} sub="Sum (Visits)" />
+                                        <KPICard label="Interactions" value={report.stories.stats.total_interactions} sub="Total Actions" />
                                     </div>
 
                                     <h3 className="text-sm font-bold text-slate-500 uppercase tracking-widest mt-4">Top Story Performers</h3>
@@ -644,6 +646,8 @@ function App() {
                                                     <th className="px-6 py-4">Likes</th>
                                                     <th className="px-6 py-4">Replies</th>
                                                     <th className="px-6 py-4">Clicks</th>
+                                                    <th className="px-6 py-4">Visits</th>
+                                                    <th className="px-6 py-4">Interactions</th>
                                                     <th className="px-6 py-4 text-center">Action</th>
                                                 </tr>
                                             </thead>
@@ -656,6 +660,8 @@ function App() {
                                                         <td className="px-6 py-4">{post.likes.toLocaleString()}</td>
                                                         <td className="px-6 py-4">{post.replies.toLocaleString()}</td>
                                                         <td className="px-6 py-4 text-pink-400">{post.link_clicks.toLocaleString()}</td>
+                                                        <td className="px-6 py-4">{post.profile_visits?.toLocaleString() || 0}</td>
+                                                        <td className="px-6 py-4 font-bold text-orange-400">{((post.likes || 0) + (post.shares || 0) + (post.replies || 0) + (post.link_clicks || 0) + (post.profile_visits || 0) + (post.sticker_taps || 0) + (post.follows || 0)).toLocaleString()}</td>
                                                         <td className="px-6 py-4 text-center">
                                                             {post.permalink && (
                                                                 <a href={post.permalink} target="_blank" rel="noreferrer"
