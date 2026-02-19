@@ -33,6 +33,7 @@ function App() {
     const [manualFbReach, setManualFbReach] = useState('');
     const [manualFbInteractions, setManualFbInteractions] = useState('');
     const [manualFbStoryCount, setManualFbStoryCount] = useState('');
+    const [manualFbStoryViews, setManualFbStoryViews] = useState(''); // NEW: Manual Views
     const [manualFbStoriesJson, setManualFbStoriesJson] = useState(''); // NEW: For raw JSON from parser
 
     // Sheet Sync State
@@ -86,7 +87,11 @@ function App() {
 
             setProcessingStep('Calculating metrics...');
             const res = await axios.get(`${API_URL}/report`, {
-                params: { start_date: startDate, end_date: endDate }
+                params: {
+                    start_date: startDate,
+                    end_date: endDate,
+                    fb_story_views: manualFbStoryViews || 0
+                }
             });
             setReport(res.data);
             setProcessingStep('');
@@ -494,12 +499,19 @@ function App() {
                             <h3 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
                                 <PlusCircle className="w-4 h-4" /> Manual Weekly Data (Facebook + Followers)
                             </h3>
-                            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
                                 <input
                                     type="number"
                                     placeholder="FB Reach"
                                     value={manualFbReach}
                                     onChange={e => setManualFbReach(e.target.value)}
+                                    className="bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-white text-sm focus:border-blue-500 outline-none transition-colors"
+                                />
+                                <input
+                                    type="number"
+                                    placeholder="FB Views"
+                                    value={manualFbStoryViews}
+                                    onChange={e => setManualFbStoryViews(e.target.value)}
                                     className="bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-white text-sm focus:border-blue-500 outline-none transition-colors"
                                 />
                                 <input

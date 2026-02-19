@@ -117,7 +117,7 @@ def clear_data():
     return {"message": "All data cleared"}
 
 @app.get("/report")
-def get_report(start_date: str = Query(...), end_date: str = Query(...)):
+def get_report(start_date: str = Query(...), end_date: str = Query(...), fb_story_views: int = 0):
     """Get report with SEPARATE Facebook and Instagram data."""
     global FACEBOOK_DF, INSTAGRAM_DF, STORIES_DF
     
@@ -128,7 +128,7 @@ def get_report(start_date: str = Query(...), end_date: str = Query(...)):
     except ValueError:
         raise HTTPException(status_code=400, detail="Invalid date format. Use YYYY-MM-DD")
 
-    report = engine.generate_report(FACEBOOK_DF, INSTAGRAM_DF, STORIES_DF, start, end)
+    report = engine.generate_report(FACEBOOK_DF, INSTAGRAM_DF, STORIES_DF, start, end, manual_fb_views=fb_story_views)
     return report
 
 @app.post("/sync-sheet")

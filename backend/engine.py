@@ -194,7 +194,9 @@ class AnalyticsEngine:
         total_posts = int(len(df))
         total_reach = safe_sum('reach')
         total_views = safe_sum('views')
-        total_engagement = safe_sum('total_engagement')
+        # Include Views in Total Engagement to match Aggregated Data
+        total_engagement_interactions = safe_sum('total_engagement') 
+        total_engagement = total_engagement_interactions + total_views
         total_follows = safe_sum('follows')
         
         # Strict Formula: (Total Engagement / Total Reach)
@@ -310,7 +312,7 @@ class AnalyticsEngine:
             })
         return stories
 
-    def _calculate_split_particulars(self, fb_df: pd.DataFrame, ig_df: pd.DataFrame, stories_df: pd.DataFrame) -> Dict[str, Any]:
+    def _calculate_split_particulars(self, fb_df: pd.DataFrame, ig_df: pd.DataFrame, stories_df: pd.DataFrame, fb_manual_views: int = 0) -> Dict[str, Any]:
         """
         Calculate 'Particulars' SEPARATELY for Facebook and Instagram.
         """
@@ -353,10 +355,10 @@ class AnalyticsEngine:
         ig_avg_interaction = (ig_interactions_only / ig_count) if ig_count > 0 else 0.0
 
         # ------------------------------------------
-        # 2. FACEBOOK (Posts Only)
+        # 2. FACEBOOK (Posts Only + Manual Story Views)
         # ------------------------------------------
         fb_total_reach = safe_sum(fb_df, 'reach')
-        fb_total_views = safe_sum(fb_df, 'views')
+        fb_total_views = safe_sum(fb_df, 'views') + fb_manual_views
         
         fb_interactions_only = (
             safe_sum(fb_df, 'likes') + safe_sum(fb_df, 'comments') + 
@@ -399,7 +401,7 @@ class AnalyticsEngine:
         }
 
     def generate_report(self, fb_df: pd.DataFrame, ig_df: pd.DataFrame, stories_df: pd.DataFrame, 
-                       start_date: datetime, end_date: datetime) -> Dict[str, Any]:
+                       start_date: datetime, end_date: datetime, manual_fb_views: int = 0) -> Dict[str, Any]:
         """Generate the final JSON report with SEPARATE + AGGREGATED platform data."""
         
         # Filter Dates
@@ -414,10 +416,19 @@ class AnalyticsEngine:
         s_filtered = filter_date(stories_df)
 
         # SPLIT STATS
-        split_particulars = self._calculate_split_particulars(fb_filtered, ig_filtered, s_filtered)
+        split_particulars = self._calculate_split_particulars(fb_filtered, ig_filtered, s_filtered, manual_fb_views)
 
         # FACEBOOK Section
         fb_stats = self._get_platform_stats(fb_filtered)
+        
+        # Add Manual FB Views
+        if manual_fb_views > 0:
+            fb_stats['total_views'] += manual_fb_views
+            fb_stats['total_engagement'] += manual_fb_views
+            if fb_stats['total_reach'] > 0:
+                fb_stats['video_view_rate'] = (fb_stats['total_views'] / fb_stats['total_reach']) * 100
+                fb_stats['eng_rate_with_views'] = (fb_stats['total_engagement'] / fb_stats['total_reach']) * 100
+
         fb_rankings = self._get_rankings(fb_filtered)
         fb_posts = self._df_to_post_list(fb_filtered)
 
