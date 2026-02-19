@@ -194,9 +194,7 @@ class AnalyticsEngine:
         total_posts = int(len(df))
         total_reach = safe_sum('reach')
         total_views = safe_sum('views')
-        # Include Views in Total Engagement to match Aggregated Data
-        total_engagement_interactions = safe_sum('total_engagement') 
-        total_engagement = total_engagement_interactions + total_views
+        total_engagement = safe_sum('total_engagement')
         total_follows = safe_sum('follows')
         
         # Strict Formula: (Total Engagement / Total Reach)

@@ -178,8 +178,9 @@ function App() {
                 // 5. Overall Analysis
                 overall_stats: {
                     date_range: `${startDate} to ${endDate}`,
-                    total_reach: (report.instagram.stats.reach + report.facebook.stats.reach + (parseInt(manualFbReach) || 0) + report.stories.stats.total_reach),
-                    total_engagement: (report.instagram.stats.total_engagement + report.facebook.stats.total_engagement),
+                    // Use Aggregated Data (Top Cards) to match Dashboard numbers perfectly
+                    total_reach: (report.aggregated.instagram.total_reach + (finalFacebookData?.total_reach || report.aggregated.facebook.total_reach)),
+                    total_engagement: (report.aggregated.instagram.total_engagement + (finalFacebookData?.total_engagement || report.aggregated.facebook.total_engagement)),
                     ig_followers: manualIgFollowers,
                     fb_followers: manualFbFollowers
                 }
