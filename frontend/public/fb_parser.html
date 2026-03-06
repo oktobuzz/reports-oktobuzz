@@ -57,8 +57,8 @@
                     <div id="totalSaves" class="text-2xl font-bold text-purple-400">0</div>
                 </div>
                 <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
-                    <div class="text-slate-500 text-xs uppercase font-bold">Total Replies</div>
-                    <div id="totalReplies" class="text-2xl font-bold text-pink-400">0</div>
+                    <div class="text-slate-500 text-xs uppercase font-bold">Total Follows</div>
+                    <div id="totalFollows" class="text-2xl font-bold text-pink-400">0</div>
                 </div>
                 <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
                     <div class="text-slate-500 text-xs uppercase font-bold">Total Shares</div>
@@ -109,9 +109,7 @@
 
             <!-- TOP PERFORMERS -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Best Reach -->
-                <div
-                    class="bg-green-900/10 border border-green-500/30 p-6 rounded-xl flex items-center justify-between">
+                <div class="bg-green-900/10 border border-green-500/30 p-6 rounded-xl flex items-center justify-between">
                     <div>
                         <div class="text-xs text-green-400 font-bold uppercase mb-2">🏆 Best Story by Reach</div>
                         <div id="bestReachDate" class="text-sm text-slate-400 mb-1 font-mono">Date</div>
@@ -120,16 +118,12 @@
                     <div class="text-green-500 opacity-20">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2v20" />
-                            <path d="m17 5-5-3-5 3" />
-                            <path d="m17 19-5 3-5-3" />
+                            <path d="M12 2v20" /><path d="m17 5-5-3-5 3" /><path d="m17 19-5 3-5-3" />
                         </svg>
                     </div>
                 </div>
 
-                <!-- Best Engagement -->
-                <div
-                    class="bg-orange-900/10 border border-orange-500/30 p-6 rounded-xl flex items-center justify-between">
+                <div class="bg-orange-900/10 border border-orange-500/30 p-6 rounded-xl flex items-center justify-between">
                     <div>
                         <div class="text-xs text-orange-400 font-bold uppercase mb-2">🔥 Best Story by Engagement</div>
                         <div id="bestEngDate" class="text-sm text-slate-400 mb-1 font-mono">Date</div>
@@ -138,8 +132,7 @@
                     <div class="text-orange-500 opacity-20">
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
+                            <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
                         </svg>
                     </div>
                 </div>
@@ -154,108 +147,177 @@
                             <th class="px-6 py-3 text-right">Reach</th>
                             <th class="px-6 py-3 text-right">Views</th>
                             <th class="px-6 py-3 text-right">Interactions</th>
-                            <th class="px-6 py-3 text-right">Likes</th>
                             <th class="px-6 py-3 text-right">Shares</th>
                             <th class="px-6 py-3 text-right">Clicks</th>
                             <th class="px-6 py-3 text-right">Saves</th>
-                            <th class="px-6 py-3 text-right">Replies</th>
+                            <th class="px-6 py-3 text-right">Follows</th>
                         </tr>
                     </thead>
-                    <tbody id="tableBody" class="divide-y divide-slate-800 bg-slate-800/50">
-                        <!-- Rows go here -->
-                    </tbody>
+                    <tbody id="tableBody" class="divide-y divide-slate-800 bg-slate-800/50"></tbody>
                 </table>
             </div>
 
-        </div>
+            <!-- DEBUG OUTPUT -->
+            <div class="bg-slate-900 p-4 rounded-xl border border-slate-700">
+                <div class="text-xs text-slate-500 uppercase font-bold mb-2">Debug — Detected Column Offsets</div>
+                <pre id="debugOut" class="text-xs text-slate-400 font-mono whitespace-pre-wrap"></pre>
+            </div>
 
+        </div>
     </div>
 
     <script>
         function parseNum(str) {
-            if (!str) return 0;
-            if (str.includes('--') || str.includes('‑') || str.includes('-')) {
-                if (!/\d/.test(str)) return 0;
-            }
+            if (str === undefined || str === null || str === '') return 0;
+            str = str.toString().trim();
+            // Return 0 for dash-only values (-- or ‑‑)
+            if (/^[\-‑]+$/.test(str)) return 0;
             return parseInt(str.replace(/,/g, ''), 10) || 0;
         }
 
         let stories = [];
+
+        // Known noise lines to skip when scanning
+        const NOISE_LINES = new Set([
+            'instagram', 'facebook', 'your story', 'story', 'crossposted',
+            'title', 'date published', 'date', 'westside, westsidestores',
+            'westside', 'westsidestores', 'boost', '​' // zero-width space
+        ]);
+
+        // Canonical column name → field key mapping
+        const COL_MAP = {
+            'reach': 'reach',
+            'views': 'views',
+            'shares': 'shares',
+            'saves': 'saves',
+            'link clicks': 'link_clicks',
+            'follows': 'follows',
+            'interactions': 'interactions',
+            'likes': 'likes',
+            'replies': 'replies',
+        };
+
+        function isDateLine(line) {
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"];
+            return monthNames.some(m => line.includes(m)) && /\d{1,2}:\d{2}/.test(line);
+        }
 
         function processData() {
             const raw = document.getElementById('rawInput').value;
             const lines = raw.split('\n').map(l => l.trim()).filter(l => l !== '');
             stories = [];
 
-            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            // ── STEP 1: Detect column order from the header block ──────────────
+            // Find "Date published" or "Date" header line
+            let headerIdx = lines.findIndex(l =>
+                l.toLowerCase() === 'date published' || l.toLowerCase() === 'date'
+            );
 
-            for (let i = 0; i < lines.length; i++) {
-                const line = lines[i];
-                const hasMonth = monthNames.some(m => line.includes(m));
-                const hasTime = line.includes(':');
+            // Build ordered list of columns by scanning lines after the header
+            // until we hit a noise/data line or a date line
+            let orderedCols = []; // e.g. ['reach','views','shares','saves','link_clicks','follows','interactions']
 
-                if (hasMonth && hasTime) {
-                    if (i + 10 < lines.length) {
-                        try {
-                            const date = line;
-                            const views = parseNum(lines[i + 1]);
-                            const reach = parseNum(lines[i + 2]);
-                            const likes = parseNum(lines[i + 3]);
-                            const shares = parseNum(lines[i + 4]);
-                            const link_clicks = parseNum(lines[i + 6]);
-                            const interactions = parseNum(lines[i + 8]);
-                            const saves = parseNum(lines[i + 9]);
-                            const replies = parseNum(lines[i + 10]);
-
-                            stories.push({ date, views, reach, likes, shares, link_clicks, interactions, saves, replies });
-                        } catch (e) {
-                            console.warn("Skipping malformed block at line", i);
-                        }
+            if (headerIdx !== -1) {
+                for (let h = headerIdx + 1; h < Math.min(headerIdx + 20, lines.length); h++) {
+                    const lc = lines[h].toLowerCase().trim();
+                    if (isDateLine(lines[h])) break;
+                    if (NOISE_LINES.has(lc)) continue; // skip noise, keep scanning
+                    if (COL_MAP[lc] !== undefined) {
+                        orderedCols.push({ name: lc, field: COL_MAP[lc] });
                     }
+                    // Stop if we collected all expected cols
+                    if (orderedCols.length >= 7) break;
                 }
             }
 
-            // Calculate Totals
-            const totalStories = stories.length;
-            const totalReach = stories.reduce((sum, s) => sum + s.reach, 0);
-            const totalViews = stories.reduce((sum, s) => sum + s.views, 0);
-            const totalInteractions = stories.reduce((sum, s) => sum + s.interactions, 0);
-            const totalSaves = stories.reduce((sum, s) => sum + s.saves, 0);
-            const totalReplies = stories.reduce((sum, s) => sum + s.replies, 0);
-            const totalShares = stories.reduce((sum, s) => sum + s.shares, 0);
-            const totalClicks = stories.reduce((sum, s) => sum + s.link_clicks, 0);
+            // Fallback: Meta Business Suite default order as of 2025-2026
+            if (orderedCols.length === 0) {
+                orderedCols = [
+                    { name: 'reach',       field: 'reach' },
+                    { name: 'views',       field: 'views' },
+                    { name: 'shares',      field: 'shares' },
+                    { name: 'saves',       field: 'saves' },
+                    { name: 'link clicks', field: 'link_clicks' },
+                    { name: 'follows',     field: 'follows' },
+                    { name: 'interactions',field: 'interactions' },
+                ];
+            }
 
-            // Grand Total for Dashboard
-            const grandTotal = totalInteractions + totalClicks + totalSaves;
+            document.getElementById('debugOut').textContent =
+                'Detected columns (in order):\n' +
+                orderedCols.map((c, i) => `  offset +${i + 1}: ${c.name} → ${c.field}`).join('\n');
 
-            // Find Best Performers
-            let bestReach = { reach: -1, date: '-' };
-            let bestEng = { interactions: -1, date: '-' };
+            // ── STEP 2: Parse each story block ────────────────────────────────
+            // After a date line, we skip noise lines and read the next N numeric lines
+            // in the order defined by orderedCols.
 
-            stories.forEach(s => {
-                if (s.reach > bestReach.reach) bestReach = s;
-                if (s.interactions > bestEng.interactions) bestEng = s;
-            });
+            for (let i = 0; i < lines.length; i++) {
+                if (!isDateLine(lines[i])) continue;
 
-            // Render Results
-            document.getElementById('totalStories').textContent = totalStories.toLocaleString();
-            document.getElementById('totalReach').textContent = totalReach.toLocaleString();
-            document.getElementById('totalViews').textContent = totalViews.toLocaleString();
+                const date = lines[i];
+                const values = {};
+                orderedCols.forEach(c => values[c.field] = 0);
+
+                // Walk forward, skipping noise, collecting numeric values
+                let colIdx = 0;
+                for (let j = i + 1; j < lines.length && colIdx < orderedCols.length; j++) {
+                    const l = lines[j].trim();
+                    if (isDateLine(l)) break; // hit next story
+                    if (NOISE_LINES.has(l.toLowerCase())) continue;
+
+                    // Accept numeric values (including -- as 0)
+                    const field = orderedCols[colIdx].field;
+                    values[field] = parseNum(l);
+                    colIdx++;
+                }
+
+                stories.push({
+                    date,
+                    reach:       values.reach       || 0,
+                    views:       values.views        || 0,
+                    shares:      values.shares       || 0,
+                    saves:       values.saves        || 0,
+                    link_clicks: values.link_clicks  || 0,
+                    follows:     values.follows      || 0,
+                    interactions:values.interactions || 0,
+                    likes:       values.likes        || 0,
+                    replies:     values.replies      || 0,
+                });
+            }
+
+            // ── STEP 3: Totals ────────────────────────────────────────────────
+            const totalStories      = stories.length;
+            const totalReach        = stories.reduce((s, x) => s + x.reach, 0);
+            const totalViews        = stories.reduce((s, x) => s + x.views, 0);
+            const totalInteractions = stories.reduce((s, x) => s + x.interactions, 0);
+            const totalSaves        = stories.reduce((s, x) => s + x.saves, 0);
+            const totalShares       = stories.reduce((s, x) => s + x.shares, 0);
+            const totalClicks       = stories.reduce((s, x) => s + x.link_clicks, 0);
+            const totalFollows      = stories.reduce((s, x) => s + x.follows, 0);
+            const grandTotal        = totalInteractions + totalClicks + totalSaves;
+
+            // Best performers
+            let bestReach = stories.reduce((best, s) => s.reach > best.reach ? s : best, { reach: -1, date: '-' });
+            let bestEng   = stories.reduce((best, s) => s.interactions > best.interactions ? s : best, { interactions: -1, date: '-' });
+
+            // ── STEP 4: Render ─────────────────────────────────────────────────
+            document.getElementById('totalStories').textContent      = totalStories.toLocaleString();
+            document.getElementById('totalReach').textContent        = totalReach.toLocaleString();
+            document.getElementById('totalViews').textContent        = totalViews.toLocaleString();
             document.getElementById('totalInteractions').textContent = totalInteractions.toLocaleString();
-            document.getElementById('totalSaves').textContent = totalSaves.toLocaleString();
-            document.getElementById('totalReplies').textContent = totalReplies.toLocaleString();
-            document.getElementById('totalShares').textContent = totalShares.toLocaleString();
-            document.getElementById('totalClicks').textContent = totalClicks.toLocaleString();
+            document.getElementById('totalSaves').textContent        = totalSaves.toLocaleString();
+            document.getElementById('totalShares').textContent       = totalShares.toLocaleString();
+            document.getElementById('totalClicks').textContent       = totalClicks.toLocaleString();
+            document.getElementById('totalFollows').textContent      = totalFollows.toLocaleString();
+            document.getElementById('grandTotal').textContent        = grandTotal.toLocaleString();
 
-            document.getElementById('grandTotal').textContent = grandTotal.toLocaleString();
-
-            // Render Best Performers
             if (bestReach.reach !== -1) {
-                document.getElementById('bestReachDate').textContent = bestReach.date;
+                document.getElementById('bestReachDate').textContent  = bestReach.date;
                 document.getElementById('bestReachValue').textContent = bestReach.reach.toLocaleString();
             }
             if (bestEng.interactions !== -1) {
-                document.getElementById('bestEngDate').textContent = bestEng.date;
+                document.getElementById('bestEngDate').textContent  = bestEng.date;
                 document.getElementById('bestEngValue').textContent = bestEng.interactions.toLocaleString();
             }
 
@@ -265,10 +327,7 @@
 
         function copyRawData() {
             if (!stories.length) return;
-            // Add current year to dates if needed, or send as is.
-            // Sending raw JSON.
-            const json = JSON.stringify(stories);
-            navigator.clipboard.writeText(json).then(() => {
+            navigator.clipboard.writeText(JSON.stringify(stories)).then(() => {
                 const status = document.getElementById('copyStatus');
                 status.textContent = "✅ Copied! Now paste into Dashboard.";
                 setTimeout(() => status.textContent = "", 3000);
@@ -276,10 +335,8 @@
         }
 
         function renderTable(stories) {
-            // Update Table
             const tbody = document.getElementById('tableBody');
             tbody.innerHTML = '';
-
             stories.forEach(s => {
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-slate-700/50 transition-colors";
@@ -288,18 +345,14 @@
                     <td class="px-6 py-4 text-right text-green-400 font-medium">${s.reach.toLocaleString()}</td>
                     <td class="px-6 py-4 text-right text-blue-400 font-medium">${s.views.toLocaleString()}</td>
                     <td class="px-6 py-4 text-right text-orange-400 font-bold">${s.interactions.toLocaleString()}</td>
-                    <td class="px-6 py-4 text-right text-slate-400">${s.likes.toLocaleString()}</td>
                     <td class="px-6 py-4 text-right text-indigo-400">${s.shares.toLocaleString()}</td>
                     <td class="px-6 py-4 text-right text-rose-400">${s.link_clicks.toLocaleString()}</td>
                     <td class="px-6 py-4 text-right text-purple-400">${s.saves.toLocaleString()}</td>
-                    <td class="px-6 py-4 text-right text-pink-400">${s.replies.toLocaleString()}</td>
+                    <td class="px-6 py-4 text-right text-pink-400">${s.follows.toLocaleString()}</td>
                 `;
                 tbody.appendChild(tr);
             });
-
-            document.getElementById('results').classList.remove('hidden');
         }
     </script>
 </body>
-
 </html>
